@@ -1,0 +1,44 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - create
+  - delete
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - resourcemirror.joshault.dev
+  resources:
+  - clustersecrets
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - resourcemirror.joshault.dev
+  resources:
+  - clustersecrets/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - resourcemirror.joshault.dev
+  resources:
+  - clustersecrets/status
+  verbs:
+  - get
+  - patch
+  - update
